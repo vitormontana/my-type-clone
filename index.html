@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MeuTipo — descubra seu tipo</title>
+<meta name="description" content="Toque nos rostos gerados por IA que você curte e descubra seu tipo — grátis, sem email, tudo no seu navegador.">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎲</text></svg>">
+</head>
+<body>
+
+<!-- ============ LANDING ============ -->
+<section id="screen-landing" class="screen">
+  <header class="topbar">
+    <span class="logo">meu<strong>tipo</strong><span class="dot">.fyi</span></span>
+  </header>
+  <div class="hero">
+    <h1>Descubra seu tipo</h1>
+    <p class="sub">Grátis · uns 10 minutos · sem email, sem cadastro</p>
+    <div id="demo-strip" class="demo-strip" aria-hidden="true"></div>
+    <p class="expl">Toque nos rostos que você curte. Cada multidão tem 12 rostos gerados
+    por IA. Depois de umas 20 multidões, a gente mostra seu tipo — em rostos e em
+    palavras simples. Tudo roda <strong>no seu navegador</strong>: nada é enviado a
+    servidor nenhum.</p>
+    <div class="pool-picker">
+      <p>Quero avaliar</p>
+      <div class="pool-btns">
+        <button class="btn pool" data-pool="f">Mulheres</button>
+        <button class="btn pool" data-pool="m">Homens</button>
+        <button class="btn pool ghost" data-pool="all">Todos</button>
+      </div>
+    </div>
+    <p class="fine">Os rostos são imagens geradas por IA (StyleGAN), não pessoas reais.
+    Seus toques ficam só no seu navegador (localStorage). Sem email, sem conta.</p>
+  </div>
+  <footer class="foot">meutipo · clone client-only inspirado no mytype.fyi · feito para GitHub Pages</footer>
+</section>
+
+<!-- ============ MULTIDÃO ============ -->
+<section id="screen-crowd" class="screen hidden">
+  <header class="topbar">
+    <span class="logo">meu<strong>tipo</strong><span class="dot">.fyi</span></span>
+    <button id="btn-results-top" class="btn small">Ver meu tipo</button>
+  </header>
+  <div class="crowd-wrap">
+    <div class="crowd-head">
+      <span id="crowd-count">Multidão 1</span>
+      <span id="tap-count">0 toques</span>
+      <span id="acc-chip" class="acc-chip hidden"></span>
+    </div>
+    <div id="grid" class="grid"></div>
+    <div class="crowd-foot">
+      <button id="btn-next" class="btn primary">Próxima multidão ↑</button>
+      <p class="hint">Toque nos que você curte · deslize para cima para a próxima</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESULTADOS ============ -->
+<section id="screen-results" class="screen hidden">
+  <header class="topbar">
+    <span class="logo">meu<strong>tipo</strong><span class="dot">.fyi</span></span>
+    <button id="btn-continue" class="btn small">Continuar avaliando</button>
+  </header>
+  <div class="results">
+    <h2>Seu tipo</h2>
+    <p id="res-summary" class="res-summary"></p>
+    <div id="res-acc" class="acc-bar"><div id="res-acc-fill"></div></div>
+    <p id="res-acc-text" class="acc-text"></p>
+
+    <h3>Seu tipo em palavras</h3>
+    <div id="res-traits" class="chips"></div>
+    <div id="res-anti-traits" class="chips anti"></div>
+
+    <h3>Seu tipo em rostos</h3>
+    <p class="sec-expl">Os que você mais curtiu até agora.</p>
+    <div id="res-top" class="grid mini"></div>
+
+    <h3>Rostos que combinam com seu tipo</h3>
+    <p class="sec-expl">Ainda não apareceram nas suas multidões, mas o modelo acha que são sua praia.</p>
+    <div id="res-predicted" class="grid mini"></div>
+
+    <h3>Populares que você curte</h3>
+    <p class="sec-expl">Quase todo mundo acha atraente — e você também.</p>
+    <div id="res-pop-like" class="grid mini"></div>
+
+    <h3>Populares que você passa</h3>
+    <p class="sec-expl">O queridinho da maioria que não é o seu tipo. É aqui que seu gosto se diferencia.</p>
+    <div id="res-pop-skip" class="grid mini"></div>
+
+    <h3>Joias escondidas</h3>
+    <p class="sec-expl">Rostos que a maioria ignora e que te atraem.</p>
+    <div id="res-gems" class="grid mini"></div>
+
+    <div class="res-actions">
+      <button id="btn-continue2" class="btn primary">Continuar avaliando</button>
+      <button id="btn-copy" class="btn">Copiar resumo</button>
+      <button id="btn-reset" class="btn danger">Apagar e recomeçar</button>
+    </div>
+    <p class="fine">Sem email: seus dados não saem do navegador. A “popularidade” é
+    simulada (não há multidão real num site estático); seu gosto é medido de verdade
+    pelos seus toques.</p>
+  </div>
+</section>
+
+<div id="toast" class="toast hidden"></div>
+<script src="js/app.js"></script>
+</body>
+</html>
